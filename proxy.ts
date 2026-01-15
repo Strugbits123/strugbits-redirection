@@ -14,24 +14,24 @@ interface GeoNextRequest extends NextRequest {
 
 // Middleware function
 export function proxy(request: GeoNextRequest): NextResponse | void {
-  // const host: string = request.headers.get("host") || "";
-  // const country: string | undefined = request.geo?.country;
+  const host: string = request.headers.get("host") || "";
+  const country: string | undefined = request.geo?.country;
 
-  // // --- Pakistan (PK) Logic ---
-  // if (country === "PK") {
-  //   if (host.includes("strugbits.co") || host.includes("strugbits.com")) {
-  //     return NextResponse.redirect("https://careers.strugbits.com");
-  //   }
-  // }
-  // // --- International Logic ---
-  // else {
-  //   if (host.includes("strugbits.com")) {
-  //     return NextResponse.redirect("https://strugbits.co");
-  //   }
-  // }
+  // --- Pakistan (PK) Logic ---
+  if (country === "PK") {
+    if (host.includes("strugbits.co") || host.includes("strugbits.com")) {
+      return NextResponse.redirect("https://careers.strugbits.com");
+    }
+  }
+  // --- International Logic ---
+  else {
+    if (host.includes("strugbits.com")) {
+      return NextResponse.redirect("https://strugbits.co");
+    }
+  }
 
-  // // Default: continue to next route
-  // return NextResponse.next();
+  // Default: continue to next route
+  return NextResponse.next();
 }
 
 // Middleware configuration
