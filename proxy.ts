@@ -22,7 +22,7 @@ export function proxy(request: GeoNextRequest): NextResponse | void {
     if (host.includes("strugbits.co") || host.includes("strugbits.com")) {
       return NextResponse.redirect("https://careers.strugbits.com");
     }
-  }
+  } 
   // --- International Logic ---
   else {
     if (host.includes("strugbits.com")) {
